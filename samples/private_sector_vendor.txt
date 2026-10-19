@@ -1,0 +1,20 @@
+From: LISTSERV@listserv.example.gov
+To: owner-fedwg@example.gov
+Subject: FED-WG message approval required
+
+LISTSERV has received a message for FED-WG that requires approval.
+
+Original sender:
+alex@vendor-example.com
+
+Original subject:
+Capability statement for upcoming procurement
+
+Message body:
+Our company would like to share our capability statement and discuss potential support for an upcoming solicitation. Please see attached.
+
+Attachment:
+capability-statement.pdf
+
+Approval token:
+OK DEMO-TOKEN-003
