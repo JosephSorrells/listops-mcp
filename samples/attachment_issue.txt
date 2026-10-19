@@ -1,0 +1,20 @@
+From: LISTSERV@listserv.example.gov
+To: owner-fedwg@example.gov
+Subject: FED-WG message approval required
+
+LISTSERV has received a message for FED-WG that requires approval.
+
+Original sender:
+pat.smith@example.gov
+
+Original subject:
+[ACTION REQUESTED] Review attached agenda
+
+Message body:
+Please see attached agenda and distribute to the group.
+
+Attachment:
+agenda.xlsx
+
+Approval token:
+OK DEMO-TOKEN-002
