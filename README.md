@@ -2,6 +2,8 @@
 
 ListOps MCP is a prototype MCP server for email-native LISTSERV moderation assistance. It was created for the GSA MCP Server and SI Agent Government Hackathon.
 
+Status: Hackathon prototype.
+
 The prototype exposes tools an agent can use to parse forwarded LISTSERV-like messages, apply deterministic safety rules, generate accessible moderator review cards, and support simulated human-in-the-loop moderation workflows.
 
 ## Problem
