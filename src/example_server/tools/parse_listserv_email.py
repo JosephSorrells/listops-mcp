@@ -30,8 +30,8 @@ def register(mcp: FastMCP) -> None:
             "openWorldHint": False,
         },
     )
-    async def parse_listserv_email(
-        raw_email: Annotated[str, "Raw or synthetic LISTSERV email text."]
+        async def parse_listserv_email(
+        raw_email: Annotated[str, "Raw or synthetic LISTSERV email text."],
     ) -> dict:
         """Parse a LISTSERV-like moderation email into structured fields.
 
