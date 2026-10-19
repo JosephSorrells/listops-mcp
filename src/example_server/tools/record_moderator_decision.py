@@ -2,7 +2,6 @@ from typing import Annotated
 
 from fastmcp import FastMCP
 
-
 ALLOWED_DECISIONS = ["APPROVE", "HOLD", "FIX", "ESCALATE"]
 
 
