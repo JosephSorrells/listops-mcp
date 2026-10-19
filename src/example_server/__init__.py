@@ -1,13 +1,3 @@
-from example_server.tools import (
-    apply_safety_rules,
-    example_tool,
-    generate_review_card,
-    parse_listserv_email,
-)
+"""Example MCP server package for the ListOps hackathon prototype."""
 
-
-def register_tools(mcp) -> None:
-    example_tool.register(mcp)
-    parse_listserv_email.register(mcp)
-    apply_safety_rules.register(mcp)
-    generate_review_card.register(mcp)
+__version__ = "0.1.0"
