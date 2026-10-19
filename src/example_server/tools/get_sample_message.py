@@ -2,9 +2,7 @@ from typing import Annotated
 
 from fastmcp import FastMCP
 
-
-SAMPLE_MESSAGES = {
-    "low_risk_announcement": """From: LISTSERV@listserv.example.gov
+LOW_RISK_ANNOUNCEMENT = """From: LISTSERV@listserv.example.gov
 To: owner-fedwg@example.gov
 Subject: FED-WG message approval required
 
@@ -17,12 +15,15 @@ Original subject:
 [ANNOUNCEMENT] October working group meeting
 
 Message body:
-Please distribute the following meeting announcement. The October working group meeting will be held next Thursday. Details are available at https://agency.gov/meeting.
+Please distribute the following meeting announcement.
+The October working group meeting will be held next Thursday.
+Details are available at https://agency.gov/meeting.
 
 Approval token:
 OK DEMO-TOKEN-001
-""",
-    "attachment_issue": """From: LISTSERV@listserv.example.gov
+"""
+
+ATTACHMENT_ISSUE = """From: LISTSERV@listserv.example.gov
 To: owner-fedwg@example.gov
 Subject: FED-WG message approval required
 
@@ -42,8 +43,9 @@ agenda.xlsx
 
 Approval token:
 OK DEMO-TOKEN-002
-""",
-    "private_sector_vendor": """From: LISTSERV@listserv.example.gov
+"""
+
+PRIVATE_SECTOR_VENDOR = """From: LISTSERV@listserv.example.gov
 To: owner-fedwg@example.gov
 Subject: FED-WG message approval required
 
@@ -56,14 +58,21 @@ Original subject:
 Capability statement for upcoming procurement
 
 Message body:
-Our company would like to share our capability statement and discuss potential support for an upcoming solicitation. Please see attached.
+Our company would like to share our capability statement.
+They would also like to discuss potential support for an upcoming solicitation.
+Please see attached.
 
 Attachment:
 capability-statement.pdf
 
 Approval token:
 OK DEMO-TOKEN-003
-""",
+"""
+
+SAMPLE_MESSAGES = {
+    "attachment_issue": ATTACHMENT_ISSUE,
+    "low_risk_announcement": LOW_RISK_ANNOUNCEMENT,
+    "private_sector_vendor": PRIVATE_SECTOR_VENDOR,
 }
 
 
@@ -81,7 +90,7 @@ def register(mcp: FastMCP) -> None:
     async def get_sample_message(
         sample_name: Annotated[
             str,
-            "Sample name: low_risk_announcement, attachment_issue, or private_sector_vendor.",
+            "Sample name for the synthetic LISTSERV message.",
         ],
     ) -> dict:
         """Return a synthetic LISTSERV-like sample message for demos.
@@ -91,7 +100,7 @@ def register(mcp: FastMCP) -> None:
         if sample_name not in SAMPLE_MESSAGES:
             return {
                 "status": "error",
-                "hint": "Use low_risk_announcement, attachment_issue, or private_sector_vendor.",
+                "hint": "Use one of the available sample message names.",
                 "available_samples": sorted(SAMPLE_MESSAGES.keys()),
             }
 
