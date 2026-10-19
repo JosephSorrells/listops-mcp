@@ -1,5 +1,6 @@
-from typing import Annotated
 import re
+from typing import Annotated
+
 from fastmcp import FastMCP
 
 
@@ -41,10 +42,18 @@ def register(mcp: FastMCP) -> None:
         original_sender = _find_line_value(raw_email, "Original sender")
         original_subject = _find_line_value(raw_email, "Original subject")
 
-        token_match = re.search(r"\bOK\s+[A-Z0-9\-]+", raw_email, flags=re.IGNORECASE)
+        token_match = re.search(
+            r"\bOK\s+[A-Z0-9\-]+",
+            raw_email,
+            flags=re.IGNORECASE,
+        )
         approval_token = token_match.group(0) if token_match else None
 
-        list_match = re.search(r"message for\s+([A-Z0-9\-_]+)", raw_email, flags=re.IGNORECASE)
+        list_match = re.search(
+            r"message for\s+([A-Z0-9\-_]+)",
+            raw_email,
+            flags=re.IGNORECASE,
+        )
         list_name = list_match.group(1).upper() if list_match else "UNKNOWN"
 
         urls = _extract_urls(raw_email)
@@ -64,7 +73,10 @@ def register(mcp: FastMCP) -> None:
             raw_email,
             flags=re.DOTALL | re.IGNORECASE,
         )
-        body_excerpt = body_match.group(1).strip()[:500] if body_match else raw_email[:500]
+        if body_match:
+            body_excerpt = body_match.group(1).strip()[:500]
+        else:
+            body_excerpt = raw_email[:500]
 
         sender_domain = "unknown"
         if original_sender and "@" in original_sender:
