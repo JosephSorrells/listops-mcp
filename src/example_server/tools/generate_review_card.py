@@ -1,4 +1,5 @@
 from typing import Annotated
+
 from fastmcp import FastMCP
 
 
@@ -18,15 +19,21 @@ def register(mcp: FastMCP) -> None:
         sender: Annotated[str, "Original sender email."],
         summary: Annotated[str, "Plain-language message summary."],
         risk: Annotated[str, "LOW, MEDIUM, or HIGH."],
-        recommended_action: Annotated[str, "APPROVE, HOLD, FIX, or ESCALATE."],
+        recommended_action: Annotated[
+            str,
+            "APPROVE, HOLD, FIX, or ESCALATE.",
+        ],
         reasons: Annotated[list[str], "Reasons for the recommendation."],
     ) -> dict:
-        """Generate a plain-text, accessible review card for email moderators.
+        """Generate a plain-text, accessible review card for moderators.
 
         The card is designed for email clients, screen readers, mobile users,
         and moderators who should only need one-word replies.
         """
-        reasons_text = "\n".join(f"- {reason}" for reason in reasons) if reasons else "- No reasons provided."
+        if reasons:
+            reasons_text = "\n".join(f"- {reason}" for reason in reasons)
+        else:
+            reasons_text = "- No reasons provided."
 
         card = f"""ACTION NEEDED
 
