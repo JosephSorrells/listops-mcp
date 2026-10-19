@@ -1,3 +1,96 @@
+# ListOps MCP
+
+ListOps MCP is a prototype MCP server for email-native LISTSERV moderation assistance. It was created for the GSA MCP Server and SI Agent Government Hackathon.
+
+The prototype exposes tools an agent can use to parse forwarded LISTSERV-like messages, apply deterministic safety rules, generate accessible moderator review cards, and support simulated human-in-the-loop moderation workflows.
+
+## Problem
+
+Federal LISTSERVs remain important collaboration channels, but moderation often happens manually in individual inboxes. List owners may use Outlook, Gmail, Thunderbird, HCL Notes, Apple Mail, or other email systems. This makes moderation hard to standardize, audit, summarize, and support across agencies.
+
+## Solution
+
+ListOps MCP provides a system-agnostic, email-native moderation assistant. The prototype shows how an agent can:
+
+- Parse a LISTSERV-like moderation message.
+- Detect attachments, links, sender domains, and approval-token presence.
+- Apply deterministic safety rules before any AI-generated summary.
+- Generate plain-text moderator review cards.
+- Support simple moderator actions: APPROVE, HOLD, FIX, ESCALATE.
+- Keep humans in control of consequential decisions.
+
+## What this prototype demonstrates
+
+- Parsing synthetic LISTSERV moderation emails.
+- Applying rules-first safety checks.
+- Generating accessible review cards.
+- Supporting human-in-the-loop moderation.
+- Documenting safety and accessibility boundaries.
+- Preparing for use with IBM watsonx Orchestrate.
+
+## What this prototype does not do
+
+- It does not connect to a production LISTSERV server.
+- It does not read production email.
+- It does not send real email.
+- It does not send real LISTSERV commands.
+- It does not make autonomous moderation decisions.
+- It does not process real sensitive data.
+
+## ListOps MCP tools
+
+This prototype adds the following MCP tools:
+
+- `parse_listserv_email`
+- `apply_safety_rules`
+- `generate_review_card`
+
+Planned follow-on tools include:
+
+- `record_moderator_decision`
+- `prepare_simulated_listserv_command`
+- `summarize_list_activity`
+
+## Safety model
+
+The safety model is rules-first and human-in-the-loop:
+
+1. The tool parses the message.
+2. Deterministic safety rules identify attachments, links, external senders, and vendor/procurement language.
+3. The agent generates a review card.
+4. A human moderator decides what to do.
+5. Real command execution is out of scope for this prototype.
+
+See `docs/safety.md` for more detail.
+
+## Accessibility
+
+Review cards are designed to be plain-text and usable across common email clients and assistive technologies. The default moderator actions use one-word replies:
+
+- APPROVE
+- HOLD
+- FIX
+- ESCALATE
+
+See `docs/accessibility.md` for more detail.
+
+## Demo data
+
+Synthetic sample messages are available in the `samples/` folder:
+
+- `low_risk_announcement.txt`
+- `attachment_issue.txt`
+- `private_sector_vendor.txt`
+
+## IBM watsonx Orchestrate
+
+Agent instructions for watsonx Orchestrate are included in:
+
+- `orchestrate/agent_instructions.md`
+
+---
+
+
 # GSA MCP Hackathon — Server Template
 
 A ready-to-run starter for building a [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server in Python, plus deployment kits for **IBM Cloud (watsonx Orchestrate)** and **Databricks**.
