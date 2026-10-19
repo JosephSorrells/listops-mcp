@@ -1,8 +1,13 @@
-"""example_server — a starter MCP server package.
+from example_server.tools import (
+    apply_safety_rules,
+    example_tool,
+    generate_review_card,
+    parse_listserv_email,
+)
 
-Rename this package to your service name (e.g. `census_mcp`, `weather_mcp`)
-before you publish. See the repo README ("Rename the package") for the two
-places you need to update.
-"""
 
-__version__ = "0.1.0"
+def register_tools(mcp) -> None:
+    example_tool.register(mcp)
+    parse_listserv_email.register(mcp)
+    apply_safety_rules.register(mcp)
+    generate_review_card.register(mcp)
