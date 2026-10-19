@@ -1,0 +1,17 @@
+From: LISTSERV@listserv.example.gov
+To: owner-fedwg@example.gov
+Subject: FED-WG message approval required
+
+LISTSERV has received a message for FED-WG that requires approval.
+
+Original sender:
+jane.doe@example.gov
+
+Original subject:
+[ANNOUNCEMENT] October working group meeting
+
+Message body:
+Please distribute the following meeting announcement. The October working group meeting will be held next Thursday. Details are available at https://agency.gov/meeting.
+
+Approval token:
+OK DEMO-TOKEN-001
