@@ -3,6 +3,7 @@ from example_server.tools import (
     example_tool,
     generate_review_card,
     parse_listserv_email,
+    prepare_simulated_listserv_command,
     record_moderator_decision,
 )
 
@@ -13,3 +14,4 @@ def register_tools(mcp) -> None:
     apply_safety_rules.register(mcp)
     generate_review_card.register(mcp)
     record_moderator_decision.register(mcp)
+    prepare_simulated_listserv_command.register(mcp)
