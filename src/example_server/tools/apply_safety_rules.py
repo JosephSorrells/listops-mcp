@@ -2,7 +2,6 @@ from typing import Annotated
 
 from fastmcp import FastMCP
 
-
 PROCUREMENT_TERMS = [
     "procurement",
     "vendor",
