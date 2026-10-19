@@ -1,4 +1,5 @@
 from typing import Annotated
+
 from fastmcp import FastMCP
 
 
@@ -34,10 +35,19 @@ def register(mcp: FastMCP) -> None:
         },
     )
     async def apply_safety_rules(
-        sender_domain: Annotated[str, "Sender domain, such as agency.gov or vendor.com."],
+        sender_domain: Annotated[
+            str,
+            "Sender domain, such as agency.gov or vendor.com.",
+        ],
         body_excerpt: Annotated[str, "Message body excerpt."],
-        has_attachments: Annotated[bool, "Whether the message has real attachments."],
-        link_domains: Annotated[list[str], "Domains extracted from message links."],
+        has_attachments: Annotated[
+            bool,
+            "Whether the message has real attachments.",
+        ],
+        link_domains: Annotated[
+            list[str],
+            "Domains extracted from message links.",
+        ],
     ) -> dict:
         """Apply deterministic safety rules before any AI recommendation.
 
@@ -58,12 +68,17 @@ def register(mcp: FastMCP) -> None:
             flags.append("PROCUREMENT_OR_VENDOR_LANGUAGE")
             rules_triggered.append("PROCUREMENT_LANGUAGE_REQUIRES_ESCALATION")
 
-        if sender_domain_l and not sender_domain_l.endswith(".gov") and sender_domain_l != "example.gov":
+        if (
+            sender_domain_l
+            and not sender_domain_l.endswith(".gov")
+            and sender_domain_l != "example.gov"
+        ):
             flags.append("PRIVATE_SECTOR_OR_EXTERNAL_SENDER")
             rules_triggered.append("EXTERNAL_SENDER_REQUIRES_REVIEW")
 
         unknown_or_shortened_links = [
-            domain for domain in link_domains
+            domain
+            for domain in link_domains
             if domain in SHORTENERS or not domain.endswith(".gov")
         ]
 
