@@ -1,8 +1,8 @@
 from example_server.tools import (
-    example_tool,
-    parse_listserv_email,
     apply_safety_rules,
+    example_tool,
     generate_review_card,
+    parse_listserv_email,
 )
 
 
